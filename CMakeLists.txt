@@ -7,7 +7,7 @@ project ("Planning Algorithms")
 
 include_directories("include")
 
-add_library(DStarLite "src/DStarLite.cpp")
+add_library(DStarLite "src/DStarLite.cpp" "src/AugmentedPriorityQueue.cpp")
 
 # Add source to this project's executable.
 add_executable (CMakeTarget "Planning Algorithms.cpp")
