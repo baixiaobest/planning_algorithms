@@ -7,6 +7,8 @@
 template<typename StateSpaceType>
 class PriorityItem {
 public:
+	PriorityItem() {};
+
 	PriorityItem& SetPriority(std::pair<double, double> priority) { 
 		priority_ = priority; 
 		return *this;
@@ -25,10 +27,11 @@ public:
 	/** 
 	 * The priority of the two items are lexicographical order, we compare the
 	 * first item in priority, then compare the second item in priority.
+	 * Return true if this item is popped before "other".
 	 */
 	bool operator< (const PriorityItem& other) const {
-		return priority_.first < other.first
-			|| priority_.first == other.first && priority_.second < other.second;
+		return priority_.first < other.priority_.first
+			|| (priority_.first == other.priority_.first && priority_.second < other.priority_.second);
 	};
 
 	std::pair<double, double> GetPriority() const { return priority_; };
@@ -39,7 +42,7 @@ public:
 
 private:
 	/** Pirority is f score and rhs score. */
-	std::pair<T, T> priority_;
+	std::pair<double, double> priority_;
 	/** ID of this item, this will be used to invalidate outdated item. */
 	int id_;
 	/** A state space object that inherits from StateSpace class. */

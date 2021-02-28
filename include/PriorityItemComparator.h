@@ -6,8 +6,9 @@
 /** Comparator internally used by the Augmented Priority Queue. */
 template<typename StateSpaceType>
 class PriorityItemComparator {
+public:
 	bool operator() (const PriorityItem<StateSpaceType>& a, const PriorityItem<StateSpaceType>& b) {
-		return a < b;
+		return !(a < b);
 	}
 };
 

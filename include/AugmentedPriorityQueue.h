@@ -6,8 +6,10 @@
 #include <limits>
 #include <unordered_map>
 #include <tuple>
+#include <iostream>
 #include "PriorityItem.h"
 #include "PriorityItemComparator.h"
+#include "StateSpaceHash.h"
 
 /**
  * AugmentedPriorityQueue is based on std::priority_queue with additional properties.
@@ -47,13 +49,16 @@ public:
 	 */
 	void Push(const Container& item);
 
+	/** Construct and push item into the queue. */
+	void Emplace(StateSpaceType statespace, double priority1, double priority2);
+
 	/** Pop top item from the queue. */
 	void Pop();
 
 	/** Update the priority value of an item. Throw error if there is no existing item in the queue.
 	 *  item: contains the statespace and the updated priority.
 	 */
-	void Update(const Container& item);
+	void Update(StateSpaceType statespace, double priority1, double priority2);
 
 	/** Delete an item that has corresponding statespace.
 	 *  statespace: statespace of the item you want to delete.
@@ -80,7 +85,7 @@ private:
 	 *  Each statespace at most has one corresponding item in priority queue.
 	 *  In actual implementation, there will be duplicate item in the queue, having
 	 *  a map can prevent the hassel of deleting item from the queue.*/
-	std::unordered_map<StateSpaceType, int> statespaceToId_;
+	std::unordered_map<StateSpaceType, int, StateSpaceHash<StateSpaceType>> statespaceToId_;
 
 	/** Next id that will be assigned to new item pushed to the queue. 
 	 *  Each priority item will be uniquely identified by their id.
@@ -90,7 +95,7 @@ private:
 	/** Maximum id that can be assigned to the priority item. 
 	 *  After all number is assigned, id starts from 0 again. 
 	 */
-	constexpr int MAX_ID = INT_MAX - 1;
+	const int MAX_ID = INT_MAX - 1;
 };
 
 #endif
