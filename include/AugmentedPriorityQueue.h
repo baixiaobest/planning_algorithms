@@ -29,6 +29,7 @@
 template<typename StateSpaceType>
 class AugmentedPriorityQueue {
 public:
+	AugmentedPriorityQueue() = default;
 	/** Item/container for interfacing AugmentedPriorityQueue. Statespace and its two priorities values.*/
 	using Container = std::tuple<StateSpaceType, double, double>;
 
@@ -68,7 +69,10 @@ public:
 	/** Check if queue contains item of corresponding statespace. 
 	 *  statespace: statespace of the item in the queue.
 	 */
-	bool HasItem(StateSpaceType statespace) const;
+	bool Contains(StateSpaceType statespace) const;
+
+	/** Clear everything in the queue. */
+	void Clear();
 
 private:
 	/** Names of the Container tuple. */

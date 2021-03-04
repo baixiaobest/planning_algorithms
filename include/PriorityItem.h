@@ -7,7 +7,7 @@
 template<typename StateSpaceType>
 class PriorityItem {
 public:
-	PriorityItem() {};
+	PriorityItem() : id_(0) {};
 
 	PriorityItem& SetPriority(std::pair<double, double> priority) { 
 		priority_ = priority; 

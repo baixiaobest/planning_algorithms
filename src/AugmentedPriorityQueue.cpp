@@ -117,9 +117,16 @@ void AugmentedPriorityQueue<StateSpaceType>::Delete(StateSpaceType statespace)
 }
 
 template<typename StateSpaceType>
-bool AugmentedPriorityQueue<StateSpaceType>::HasItem(StateSpaceType statespace) const {
+bool AugmentedPriorityQueue<StateSpaceType>::Contains(StateSpaceType statespace) const {
 	auto it = statespaceToId_.find(statespace);
 	return it != statespaceToId_.end();
+}
+
+template<typename StateSpaceType>
+void AugmentedPriorityQueue<StateSpaceType>::Clear() {
+	priorityQueue_ = std::priority_queue<PriorityItemType, std::vector<PriorityItemType>, PriorityItemComparator<StateSpaceType>>();
+	statespaceToId_.clear();
+	currentId_ = 0;
 }
 
 template class AugmentedPriorityQueue<GridStateSpace>;

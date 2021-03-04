@@ -74,23 +74,23 @@ TEST(AugmentedPriorityQueueTest, testDelete) {
 	ASSERT_TRUE(std::get<0>(q.Top()) == ss1);
 	ASSERT_EQ(q.Size(), 6);
 
-	ASSERT_TRUE(q.HasItem(ss3));
+	ASSERT_TRUE(q.Contains(ss3));
 	q.Delete(ss3);
-	ASSERT_FALSE(q.HasItem(ss3));
+	ASSERT_FALSE(q.Contains(ss3));
 
 	ASSERT_TRUE(std::get<0>(q.Top()) == ss1);
 	ASSERT_EQ(q.Size(), 5);
 
-	ASSERT_TRUE(q.HasItem(ss1));
+	ASSERT_TRUE(q.Contains(ss1));
 	q.Delete(ss1);
-	ASSERT_FALSE(q.HasItem(ss1));
+	ASSERT_FALSE(q.Contains(ss1));
 
 	ASSERT_TRUE(std::get<0>(q.Top()) == ss2);
 	ASSERT_EQ(q.Size(), 4);
 
-	ASSERT_TRUE(q.HasItem(ss2));
+	ASSERT_TRUE(q.Contains(ss2));
 	q.Delete(ss2);
-	ASSERT_FALSE(q.HasItem(ss2));
+	ASSERT_FALSE(q.Contains(ss2));
 
 	ASSERT_TRUE(std::get<0>(q.Top()) == ss4);
 	ASSERT_EQ(q.Size(), 3);

@@ -10,11 +10,11 @@ using namespace std;
 
 int main()
 {
-	DStarLite dstarLite;
-	dstarLite.ComputeShortestPath();
-	AugmentedPriorityQueue<GridStateSpace> q;
-	GridStateSpace ss(0, 2);
-	q.Emplace(ss, 1, 2);
-	std::cout << q.Size() << std::endl;
-	return 0;
+	// DStarLite dstarLite;
+	// dstarLite.ComputeShortestPath();
+	// AugmentedPriorityQueue<GridStateSpace> q;
+	// GridStateSpace ss(0, 2);
+	// q.Emplace(ss, 1, 2);
+	// std::cout << q.Size() << std::endl;
+	// return 0;
 }
